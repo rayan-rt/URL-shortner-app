@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- css -->
+        <link rel="stylesheet" href="/stylesheets/index.css">
+
+        <title>Create URL</title>
+    </head>
+
+    <body>
+        <header>
+            <h1><a href="/">Locator</a></h1>
+
+            <div class="url_links">
+                <a href="/url/read_page" class="btn_transition">You</a>
+                <a href="/url/create_page" class="btn_transition">Create</a>
+            </div>
+
+            <% if (locals.signin) { %>
+            <form action="/user/signout" method="post">
+                <button type="submit" class="signout_btn btn_transition">Sign Out</button>
+            </form>
+            <% } else { %>
+
+            <div class="sign_btns">
+                <a href="/signin" class="signin_btn btn_transition">Sign In</a>
+                <a href="/signup" class="signup_btn btn_transition">Sign Up</a>
+            </div>
+
+            <% } %>
+        </header>
+
+        <section>
+
+            <section>
+                <h2>Your Short URLs</h2>
+                <% if (locals.urls) { %>
+                <div class="short_urls">
+                    <table class="url_table">
+                        <tr>
+                            <th>Short</th>
+                            <th>Real</th>
+                            <th>Visits</th>
+                        </tr>
+                        <% urls.forEach(url => { %>
+                        <tr>
+                            <td>http://localhost:3000/url/<%= url.shortURL %></td>
+                            <td><%= url.redirectURL %></td>
+                            <td><%= url.URLvisits.length %></td>
+                        </tr>
+                        <% }) %>
+                    </table>
+                </div>
+                <% } %>
+            </section>
+        </section>
+    </body>
+
+</html>

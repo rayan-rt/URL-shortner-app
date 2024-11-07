@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- css -->
+        <link rel="stylesheet" href="/stylesheets/index.css">
+
+        <title>URL Shortner</title>
+    </head>
+
+    <body>
+        <header>
+            <h1><a href="/">Locator</a></h1>
+
+            <div class="url_links">
+                <a href="/url/read_page" class="btn_transition">You</a>
+                <a href="/url/create_page" class="btn_transition">Create</a>
+            </div>
+
+            <% if (locals.signin) { %>
+            <form action="/user/signout" method="post">
+                <button type="submit" class="signout_btn btn_transition">Sign Out</button>
+            </form>
+            <% } else { %>
+
+            <div class="sign_btns">
+                <a href="/signin" class="signin_btn btn_transition">Sign In</a>
+                <a href="/signup" class="signup_btn btn_transition">Sign Up</a>
+            </div>
+
+            <% } %>
+        </header>
+
+        <section>
+            <h2>Hey Everybody!</h2>
+            <h1>We're providing you URL Shortner Service</h1>
+            <a href="/url/create_page" class="btn btn_transition">Short Your URL ↗</a>
+        </section>
+    </body>
+
+</html>

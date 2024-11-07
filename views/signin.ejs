@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- css -->
+        <link rel="stylesheet" href="/stylesheets/index.css">
+
+        <title>Sign In</title>
+    </head>
+
+    <body>
+        <header>
+            <h1><a href="/">Locator</a></h1>
+
+            <div class="url_links">
+                <a href="/url/read_page" class="btn_transition">You</a>
+                <a href="/url/create_page" class="btn_transition">Create</a>
+            </div>
+
+            <% if (locals.signin) { %>
+            <form action="/user/signout" method="post">
+                <button type="submit" class="signout_btn btn_transition">Sign Out</button>
+            </form>
+            <% } else { %>
+
+            <div class="sign_btns">
+                <a href="/signin" class="signin_btn btn_transition">Sign In</a>
+                <a href="/signup" class="signup_btn btn_transition">Sign Up</a>
+            </div>
+
+            <% } %>
+        </header>
+
+        <section>
+            <form action="/user/signin" method="post" class="sign_form">
+                <input name="userEmail" type="email" placeholder="Enter Email" required>
+                <input name="userPassword" type="password" placeholder="Enter Password" required>
+                <button type="submit" class="btn btn_transition">Sign In</button>
+            </form>
+            <a href="/signup" class="switch_page btn_transition">Don't have an Account</a>
+        </section>
+    </body>
+
+</html>

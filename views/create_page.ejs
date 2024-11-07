@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- css -->
+        <link rel="stylesheet" href="/stylesheets/index.css">
+
+        <title>Create URL</title>
+    </head>
+
+    <body>
+        <header>
+            <h1><a href="/">Locator</a></h1>
+
+            <div class="url_links">
+                <a href="/url/read_page" class="btn_transition">You</a>
+                <a href="/url/create_page" class="btn_transition">Create</a>
+            </div>
+
+            <% if (locals.signin) { %>
+            <form action="/user/signout" method="post">
+                <button type="submit" class="signout_btn btn_transition">Sign Out</button>
+            </form>
+            <% } else { %>
+
+            <div class="sign_btns">
+                <a href="/signin" class="signin_btn btn_transition">Sign In</a>
+                <a href="/signup" class="signup_btn btn_transition">Sign Up</a>
+            </div>
+
+            <% } %>
+        </header>
+
+        <section>
+            <h2>Shorten your URL</h2>
+
+            <div class="short_urls">
+                <% if (locals.urlID) { %>
+                <p>http://localhost:3000/url/<%= urlID %></p>
+                <% } %>
+
+                <form action="/url" method="post" class="url_form">
+                    <input required name="redirectURL" type="text" placeholder="Enter URL...">
+                    <button type="submit">↑</button>
+                </form>
+            </div>
+        </section>
+    </body>
+
+</html>
