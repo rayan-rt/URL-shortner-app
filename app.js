@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+
 import express from "express";
 import { DBconnection } from "./utils/DBconnection.js";
 
@@ -11,13 +13,13 @@ import { router as urlRouter } from "./routers/urlRouter.js";
 import { router as userRouter } from "./routers/userRouter.js";
 import { authenticate } from "./middlewares/auth.js";
 
+dotenv.config();
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 // DB
-const DB_URL = "127.0.0.1:27017";
-const DB_NAME = "urlShortenerFSDB";
-DBconnection(DB_URL, DB_NAME);
+DBconnection();
 
 // file
 const __filename = fileURLToPath(import.meta.url);
